@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import OrderForm from "./components/OrderForm";
+import OrdersList from "./components/OrdersList";
 
-function App() {
+const App = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    setOrders(storedOrders);
+  }, []);
+
+  const updateOrders = (updatedOrders) => {
+    setOrders(updatedOrders);
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <OrderForm updateOrders={updateOrders} />
+      <h2>Orders</h2>
+      <OrdersList orders={orders} updateOrders={updateOrders} />
     </div>
   );
-}
+};
 
 export default App;
