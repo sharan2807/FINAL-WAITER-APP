@@ -3,6 +3,7 @@ import React from "react";
 const OrdersList = ({ orders, deleteOrder }) => {
   return (
     <div>
+      <h2>Orders:</h2>
       <h2>Table 1</h2>
       {orders.map((order, index) => {
         if (order.table === "Table 1") {

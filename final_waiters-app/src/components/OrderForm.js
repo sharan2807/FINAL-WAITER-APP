@@ -26,7 +26,7 @@ const OrderForm = ({ addToBill }) => {
         placeholder="ID"
       />
       <input
-        type="text"
+        type="number"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         placeholder="Price"

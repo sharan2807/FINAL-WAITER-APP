@@ -6,6 +6,7 @@ const App = () => {
   const [orders, setOrders] = useState([]);
 
   const addToBill = (order) => {
+    // console.log(order);
     setOrders([...orders, order]);
     localStorage.setItem("orders", JSON.stringify([...orders, order]));
   };
@@ -18,8 +19,8 @@ const App = () => {
 
   return (
     <div>
+      <h1>Restaurant Bill App</h1>
       <OrderForm addToBill={addToBill} />
-      <h2>Orders</h2>
       <OrdersList orders={orders} deleteOrder={deleteOrder} />
     </div>
   );
